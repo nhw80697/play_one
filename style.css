@@ -1,0 +1,14 @@
+.main_board{
+    width: 20%;
+    margin: auto auto;
+    margin-top: 10vh;
+    background-color: red;
+}
+
+.square{
+    width: 16%;
+    height: 40px;
+    border-style: solid;
+    display: inline-block;
+    top: 0%;
+}
