@@ -8,30 +8,33 @@ function addBoard(){
 }
 
 var random = randomNumber();
-var string = "";
+var string = [];
 function addKey(e){    
     let main_board = document.getElementsByClassName("main_board");
     let squares = main_board[main_board.length-1].childNodes;
 
     if (!isNaN(e.key) && string.length < 5){
-        string += e.key;
+        string.push(e.key);
         squares[string.length].innerHTML = e.key;
     }
 
     if (e.keyCode === 13 && string.length == 5){
-        console.log(random);
+        let sumString = 0;
         [...random].forEach((value, key) => {
-            [...string].forEach((valueString, keyString)=>{
-                console.log(value + "-" + valueString)
+            string.forEach((valueString, keyString)=>{
                 if (value == valueString && key == keyString){
-                    console.log(squares[key + 1]);
                     squares[key + 1].style = "background-color: red";
+                    string[key] = 10;
+                    console.log(string[key]);
                 }else if(value == valueString){
                     squares[keyString + 1].style = "background-color: yellow";
                 }
             })
         });
-        string = "";
+        string.forEach(valueString => {sumString += Number(valueString)})
+        if (sumString == 50){endPlay()}
+        console.log(sumString)
+        string = [];
         addBoard()
     }
 }
@@ -43,5 +46,11 @@ function randomNumber(){
     return num;
 }
 
+function endPlay(){
+    alert("סיימת את המשחק!");
+    location.reload();
+}
+
 addBoard();
+
 
