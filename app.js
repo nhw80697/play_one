@@ -32,7 +32,7 @@ function addKey(e){
             })
         });
         string.forEach(valueString => {sumString += Number(valueString)})
-        if (sumString == 50){endPlay()}
+        if (sumString == 50){endPlay(main_board.length)}
         console.log(sumString)
         string = [];
         addBoard()
@@ -46,8 +46,9 @@ function randomNumber(){
     return num;
 }
 
-function endPlay(){
-    alert("סיימת את המשחק!");
+function endPlay(guesses){
+    let numGuesses = guesses;
+    alert("סיימת את המשחק תוך" + numGuesses + " ניחושים!");
     location.reload();
 }
 
